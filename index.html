@@ -8,10 +8,6 @@
 
 <style>
 
-/* =========================================================
-   BASIC
-========================================================= */
-
 * {
     box-sizing: border-box;
 }
@@ -29,7 +25,7 @@ body {
     color: #35354a;
 
     background:
-        radial-gradient(circle at 15% 5%, rgba(255,255,255,.9), transparent 25%),
+        radial-gradient(circle at 15% 5%, rgba(255,255,255,.95), transparent 25%),
         radial-gradient(circle at 85% 10%, rgba(157,222,255,.8), transparent 30%),
         linear-gradient(
             180deg,
@@ -53,9 +49,7 @@ a {
 }
 
 
-/* =========================================================
-   FLOATING WEB 2.0 DECORATIONS
-========================================================= */
+/* FLOATING BUBBLES */
 
 .bubble {
     position: fixed;
@@ -98,9 +92,7 @@ a {
 }
 
 
-/* =========================================================
-   MAIN SITE
-========================================================= */
+/* MAIN SITE */
 
 .site {
     width: min(980px, calc(100% - 24px));
@@ -108,12 +100,9 @@ a {
 }
 
 
-/* =========================================================
-   HEADER
-========================================================= */
+/* HEADER */
 
 .header {
-
     position: relative;
     overflow: hidden;
 
@@ -137,9 +126,6 @@ a {
         0 8px 25px rgba(58,116,143,.28);
 }
 
-
-/* glossy reflection */
-
 .header::before {
     content: "";
 
@@ -161,9 +147,6 @@ a {
     pointer-events: none;
 }
 
-
-/* little decorative circles */
-
 .header::after {
     content: "✦  ✧  ✦  ✧  ✦";
 
@@ -178,9 +161,7 @@ a {
 }
 
 
-/* =========================================================
-   HEADER CONTENT
-========================================================= */
+/* HEADER CONTENT */
 
 .header-content {
     position: relative;
@@ -247,12 +228,9 @@ h1 {
 }
 
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
+/* NAVIGATION */
 
 .nav {
-
     margin-top: 10px;
 
     display: flex;
@@ -277,7 +255,6 @@ h1 {
 }
 
 .nav a {
-
     padding: 9px 18px;
 
     border-radius: 9px;
@@ -305,7 +282,6 @@ h1 {
 }
 
 .nav a:hover {
-
     color: #fff;
 
     background:
@@ -322,12 +298,9 @@ h1 {
 }
 
 
-/* =========================================================
-   TWO COLUMN LAYOUT
-========================================================= */
+/* TWO COLUMN LAYOUT */
 
 .columns {
-
     display: grid;
 
     grid-template-columns:
@@ -340,20 +313,15 @@ h1 {
 }
 
 @media(max-width: 750px) {
-
     .columns {
         grid-template-columns: 1fr;
     }
-
 }
 
 
-/* =========================================================
-   WEB 2.0 PANELS
-========================================================= */
+/* PANELS */
 
 .panel {
-
     border-radius: 14px;
 
     overflow: hidden;
@@ -377,7 +345,6 @@ h1 {
 }
 
 .panel-title {
-
     padding: 9px 13px;
 
     color: #3d6473;
@@ -400,7 +367,6 @@ h1 {
 }
 
 .panel-title small {
-
     float: right;
 
     color: #8aa5af;
@@ -415,12 +381,9 @@ h1 {
 }
 
 
-/* =========================================================
-   ABOUT
-========================================================= */
+/* ABOUT */
 
 .about {
-
     display: grid;
 
     grid-template-columns: 125px 1fr;
@@ -431,18 +394,15 @@ h1 {
 }
 
 @media(max-width: 550px) {
-
     .about {
         grid-template-columns: 1fr;
     }
-
 }
 
 
-/* fake avatar / artwork */
+/* YOUR ACTUAL PFP */
 
 .avatar {
-
     width: 125px;
     height: 125px;
 
@@ -450,43 +410,26 @@ h1 {
 
     border: 1px solid #81aebd;
 
-    background:
-
-        radial-gradient(
-            circle at 30% 25%,
-            rgba(255,255,255,.9),
-            transparent 15%
-        ),
-
-        linear-gradient(
-            135deg,
-            #b9edff,
-            #a6d7ff 45%,
-            #c6e9ce
-        );
+    background: #d7edf4;
 
     box-shadow:
         0 3px 0 rgba(255,255,255,.9) inset,
         0 4px 10px rgba(70,110,120,.22);
 
-    display: flex;
+    overflow: hidden;
+}
 
-    align-items: center;
-    justify-content: center;
+.avatar img {
+    width: 100%;
+    height: 100%;
 
-    text-align: center;
+    display: block;
 
-    color: #437087;
-
-    font-weight: bold;
-
-    line-height: 1.5;
+    object-fit: cover;
 }
 
 
-/* =========================================================
-   TEXT
-========================================================= */
+/* TEXT */
 
 p {
     line-height: 1.6;
@@ -506,12 +449,9 @@ p {
 }
 
 
-/* =========================================================
-   MUSIC
-========================================================= */
+/* MUSIC */
 
 .music-item {
-
     display: flex;
 
     align-items: center;
@@ -538,7 +478,6 @@ p {
 }
 
 .music-item:hover {
-
     border-color: #76afd0;
 
     background:
@@ -550,7 +489,6 @@ p {
 }
 
 .cover {
-
     flex: 0 0 53px;
 
     width: 53px;
@@ -561,13 +499,11 @@ p {
     border: 1px solid #82aebd;
 
     background:
-
         radial-gradient(
             circle at 25% 20%,
             white,
             transparent 14%
         ),
-
         linear-gradient(
             135deg,
             #89d9f2,
@@ -597,7 +533,6 @@ p {
 }
 
 .music-title {
-
     color: #315e73;
 
     font-size: 14px;
@@ -606,7 +541,6 @@ p {
 }
 
 .music-sub {
-
     margin-top: 3px;
 
     color: #879ca5;
@@ -615,7 +549,6 @@ p {
 }
 
 .listen {
-
     padding: 6px 10px;
 
     border-radius: 8px;
@@ -641,7 +574,6 @@ p {
 }
 
 .listen:hover {
-
     background:
         linear-gradient(
             180deg,
@@ -651,12 +583,9 @@ p {
 }
 
 
-/* =========================================================
-   SIDEBAR
-========================================================= */
+/* SIDEBAR */
 
 .info-row {
-
     padding: 7px 0;
 
     border-bottom: 1px dotted #b9cdd3;
@@ -673,12 +602,9 @@ p {
 }
 
 
-/* =========================================================
-   LINKS
-========================================================= */
+/* LINKS */
 
 .link {
-
     display: block;
 
     margin-bottom: 7px;
@@ -707,7 +633,6 @@ p {
 }
 
 .link:hover {
-
     color: #fff;
 
     border-color: #6aa8c5;
@@ -721,12 +646,9 @@ p {
 }
 
 
-/* =========================================================
-   CURRENTLY BOX
-========================================================= */
+/* CURRENTLY */
 
 .now {
-
     border-radius: 9px;
 
     padding: 12px;
@@ -748,12 +670,9 @@ p {
 }
 
 
-/* =========================================================
-   LITTLE BADGES
-========================================================= */
+/* BADGES */
 
 .badges {
-
     display: flex;
 
     flex-wrap: wrap;
@@ -762,7 +681,6 @@ p {
 }
 
 .badge {
-
     padding: 4px 7px;
 
     border-radius: 6px;
@@ -784,12 +702,9 @@ p {
 }
 
 
-/* =========================================================
-   VISITOR / FOOTER
-========================================================= */
+/* FOOTER */
 
 .visitor {
-
     text-align: center;
 
     margin-top: 12px;
@@ -832,44 +747,11 @@ p {
     text-decoration: underline;
 }
 
-
-/* =========================================================
-   SMALL SHINE EFFECT
-========================================================= */
-
-.shine {
-
-    position: absolute;
-
-    width: 230px;
-    height: 80px;
-
-    right: 80px;
-    top: 25px;
-
-    transform: rotate(-20deg);
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,.5),
-            transparent
-        );
-
-    border-radius: 50%;
-
-    opacity: .35;
-
-    pointer-events: none;
-}
-
 </style>
 </head>
 
 
 <body>
-
-<!-- decorative bubbles -->
 
 <div class="bubble one"></div>
 <div class="bubble two"></div>
@@ -879,13 +761,9 @@ p {
 <div class="site">
 
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
+    <!-- HEADER -->
 
     <header class="header">
-
-        <div class="shine"></div>
 
         <div class="header-content">
 
@@ -899,9 +777,7 @@ p {
 
             <div class="tagline">
 
-                <strong>
-                    hai !!
-                </strong>
+                <strong>hai !!</strong>
 
                 <br>
 
@@ -918,30 +794,27 @@ p {
     </header>
 
 
-    <!-- =====================================================
-         NAV
-    ====================================================== -->
+    <!-- NAVIGATION -->
 
     <nav class="nav">
 
         <a href="#home">home</a>
+
         <a href="#music">music</a>
+
         <a href="#about">about</a>
+
         <a href="#links">links</a>
 
     </nav>
 
 
-    <!-- =====================================================
-         COLUMNS
-    ====================================================== -->
+    <!-- MAIN CONTENT -->
 
     <div class="columns">
 
 
-        <!-- =================================================
-             LEFT
-        ================================================== -->
+        <!-- LEFT COLUMN -->
 
         <main id="home">
 
@@ -960,52 +833,61 @@ p {
 
                 </div>
 
+
                 <div class="panel-content">
 
                     <div class="about">
 
+
+                        <!-- YOUR UPLOADED PFP -->
+
                         <div class="avatar">
 
-                            CTRL<br>
-                            ALT<br>
-                            PANIC
+                            <img
+                                src="reifrutiger.png"
+                                alt="ctrlaltpanicc profile picture"
+                            >
 
                         </div>
+
 
                         <div>
 
                             <p>
 
-                                hi!! i'm <span class="blue">
-                                Autumn Gardner
+                                hi!! i'm
+                                <span class="blue">
+                                    Autumn Gardner
                                 </span>.
 
                             </p>
+
 
                             <p>
 
                                 online i usually go by
                                 <span class="purple">
-                                ctrlaltpanicc
+                                    ctrlaltpanicc
                                 </span>.
 
                             </p>
+
 
                             <p>
 
                                 i make
                                 <span class="green">
-                                90s jungle
+                                    90s jungle
                                 </span>
                                 and other genres.
 
                             </p>
 
+
                             <p>
 
-                                this website is basically just
-                                a place to put my music and
-                                whatever else i feel like making.
+                                welcome to my little corner
+                                of the internet :)
 
                             </p>
 
@@ -1032,14 +914,20 @@ p {
 
                 </div>
 
+
                 <div class="panel-content">
 
+
+                    <!-- CYB3R Z0NE 1 -->
 
                     <div class="music-item">
 
                         <div class="cover">
+
                             CYB3R<br>Z0NE
+
                         </div>
+
 
                         <div class="music-info">
 
@@ -1053,22 +941,28 @@ p {
 
                         </div>
 
+
                         <a
                             class="listen"
-                            href="https://music.amazon.com/"
+                            href="https://open.spotify.com/artist/1yJiJUKPFymGY50iW2pHYp"
                             target="_blank"
                         >
-                            listen
+                            spotify
                         </a>
 
                     </div>
 
 
+                    <!-- CYB3R Z0NE 2 -->
+
                     <div class="music-item">
 
                         <div class="cover">
+
                             CYB3R<br>Z0NE 2
+
                         </div>
+
 
                         <div class="music-info">
 
@@ -1082,22 +976,26 @@ p {
 
                         </div>
 
+
                         <a
                             class="listen"
-                            href="https://music.amazon.com/"
+                            href="https://open.spotify.com/artist/1yJiJUKPFymGY50iW2pHYp"
                             target="_blank"
                         >
-                            listen
+                            spotify
                         </a>
 
                     </div>
 
+
+                    <!-- FUTURE MUSIC -->
 
                     <div class="music-item">
 
                         <div class="cover">
                             ???
                         </div>
+
 
                         <div class="music-info">
 
@@ -1133,6 +1031,7 @@ p {
 
                 </div>
 
+
                 <div class="panel-content">
 
                     <div class="now">
@@ -1143,8 +1042,8 @@ p {
 
                         <br><br>
 
-                        currently making stuff and
-                        experimenting with different sounds.
+                        making 90s jungle and other genres,
+                        and messing around with different sounds.
 
                     </div>
 
@@ -1156,9 +1055,7 @@ p {
         </main>
 
 
-        <!-- =================================================
-             SIDEBAR
-        ================================================== -->
+        <!-- RIGHT SIDEBAR -->
 
         <aside>
 
@@ -1171,31 +1068,46 @@ p {
                     profile
                 </div>
 
+
                 <div class="panel-content">
 
                     <div class="info-row">
+
                         <strong>name:</strong>
                         Autumn
+
                     </div>
 
+
                     <div class="info-row">
+
                         <strong>username:</strong>
                         ctrlaltpanicc
+
                     </div>
 
+
                     <div class="info-row">
+
                         <strong>makes:</strong>
                         music
+
                     </div>
 
+
                     <div class="info-row">
+
                         <strong>genre:</strong>
                         90s jungle + other genres
+
                     </div>
 
+
                     <div class="info-row">
-                        <strong>website:</strong>
-                        under construction
+
+                        <strong>status:</strong>
+                        making stuff
+
                     </div>
 
                 </div>
@@ -1211,8 +1123,11 @@ p {
                     find me
                 </div>
 
+
                 <div class="panel-content">
 
+
+                    <!-- YOUTUBE -->
 
                     <a
                         class="link"
@@ -1223,21 +1138,25 @@ p {
                     </a>
 
 
+                    <!-- SPOTIFY -->
+
+                    <a
+                        class="link"
+                        href="https://open.spotify.com/artist/1yJiJUKPFymGY50iW2pHYp"
+                        target="_blank"
+                    >
+                        ♫ spotify
+                    </a>
+
+
+                    <!-- X -->
+
                     <a
                         class="link"
                         href="https://x.com/ctrlaltpanicc"
                         target="_blank"
                     >
                         𝕏 twitter / x
-                    </a>
-
-
-                    <a
-                        class="link"
-                        href="https://music.amazon.com/"
-                        target="_blank"
-                    >
-                        ♫ music
                     </a>
 
 
@@ -1253,6 +1172,7 @@ p {
                 <div class="panel-title">
                     little badges
                 </div>
+
 
                 <div class="panel-content">
 
@@ -1295,9 +1215,7 @@ p {
     </div>
 
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+    <!-- FOOTER -->
 
     <div class="visitor">
 
@@ -1311,11 +1229,21 @@ p {
 
         <div class="footer-links">
 
-            <a href="#home">home</a>
+            <a href="#home">
+                home
+            </a>
+
             ·
-            <a href="#music">music</a>
+
+            <a href="#music">
+                music
+            </a>
+
             ·
-            <a href="#about">about</a>
+
+            <a href="#about">
+                about
+            </a>
 
         </div>
 
