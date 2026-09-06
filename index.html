@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>YOUR NAME — Portfolio</title>
+
+    <style>
+        /* =====================================================
+           BASIC SETTINGS
+        ===================================================== */
+
+        :root {
+            --background: #080808;
+            --background-secondary: #111111;
+            --text: #f5f5f5;
+            --muted: #999999;
+            --accent: #ffffff;
+            --border: rgba(255,255,255,0.15);
+            --card: rgba(255,255,255,0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            overflow-x: hidden;
+            transition: background 0.5s, color 0.5s;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =====================================================
+           BACKGROUND
+        ===================================================== */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            z-index: -5;
+            overflow: hidden;
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(255,255,255,0.08),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(255,255,255,0.05),
+                    transparent 30%
+                ),
+                var(--background);
+        }
+
+        .orb {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: var(--accent);
+            filter: blur(150px);
+            opacity: 0.04;
+            animation: float 12s infinite alternate ease-in-out;
+        }
+
+        .orb.one {
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb.two {
+            right: -100px;
+            bottom: -100px;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            from {
+                transform: translate(0,0) scale(1);
+            }
+
+            to {
+                transform: translate(100px,60px) scale(1.2);
+            }
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            backdrop-filter: blur(15px);
+            background: rgba(0,0,0,0.15);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+
+        /* =====================================================
+           THEME BUTTON
+        ===================================================== */
+
+        .theme-container {
+            position: relative;
+        }
+
+        .theme-button {
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 9px 14px;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .theme-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .theme-menu {
+            position: absolute;
+            right: 0;
+            top: 50px;
+            width: 160px;
+            background: var(--background-secondary);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 8px;
+            display: none;
+        }
+
+        .theme-menu.active {
+            display: block;
+        }
+
+        .theme-option {
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            color: var(--text);
+            border: none;
+            text-align: left;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .theme-option:hover {
+            background: var(--card);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            min-height: 100vh;
+            padding: 180px 8% 100px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+        }
+
+        .small-text {
+            color: var(--muted);
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(60px, 11vw, 160px);
+            line-height: 0.85;
+            letter-spacing: -8px;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 span {
+            color: var(--muted);
+        }
+
+        .hero-description {
+            max-width: 550px;
+            color: var(--muted);
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .button {
+            display: inline-block;
+            border: 1px solid var(--border);
+            padding: 14px 22px;
+            border-radius: 100px;
+            transition: 0.3s;
+            margin-right: 10px;
+        }
+
+        .button:hover {
+            background: var(--text);
+            color: var(--background);
+            transform: translateY(-4px);
+        }
+
+        .scroll {
+            position: absolute;
+            bottom: 30px;
+            left: 8%;
+            color: var(--muted);
+            font-size: 11px;
+            letter-spacing: 3px;
+        }
+
+
+        /* =====================================================
+           GENERAL SECTIONS
+        ===================================================== */
+
+        section {
+            padding: 130px 8%;
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 60px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .section-title h2 {
+            font-size: 45px;
+            letter-spacing: -2px;
+        }
+
+        .section-title span {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           PROJECTS
+        ===================================================== */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .project {
+            min-height: 400px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            background: var(--card);
+            transition: 0.5s;
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
+            border-color: var(--text);
+        }
+
+        .project-number {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .project h3 {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            font-size: 35px;
+        }
+
+        .project p {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           MUSIC
+        ===================================================== */
+
+        .music-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .track {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            border-bottom: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .track:hover {
+            padding-left: 15px;
+        }
+
+        .track-name {
+            font-size: 25px;
+        }
+
+        .track-type {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           ABOUT
+        ===================================================== */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .about h3 {
+            font-size: 50px;
+            line-height: 1;
+            letter-spacing: -3px;
+        }
+
+        .about p {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        .contact {
+            text-align: center;
+            padding-top: 180px;
+            padding-bottom: 180px;
+        }
+
+        .contact h2 {
+            font-size: clamp(50px, 9vw, 130px);
+            letter-spacing: -6px;
+            margin-bottom: 40px;
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .socials a {
+            color: var(--muted);
+            transition: 0.3s;
+        }
+
+        .socials a:hover {
+            color: var(--text);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            padding: 30px 8%;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           THEMES
+        ===================================================== */
+
+        body.purple {
+            --background: #0d0712;
+            --background-secondary: #160d1d;
+            --text: #f4eaff;
+            --muted: #a995b5;
+            --accent: #c77dff;
+            --border: rgba(199,125,255,0.2);
+            --card: rgba(199,125,255,0.06);
+        }
+
+        body.blue {
+            --background: #050b12;
+            --background-secondary: #0a141f;
+            --text: #e8f4ff;
+            --muted: #8ca4b8;
+            --accent: #55b8ff;
+            --border: rgba(85,184,255,0.2);
+            --card: rgba(85,184,255,0.06);
+        }
+
+        body.red {
+            --background: #120606;
+            --background-secondary: #1d0909;
+            --text: #fff0f0;
+            --muted: #b89393;
+            --accent: #ff5555;
+            --border: rgba(255,85,85,0.2);
+            --card: rgba(255,85,85,0.06);
+        }
+
+        body.green {
+            --background: #06100a;
+            --background-secondary: #0b1a10;
+            --text: #edfff2;
+            --muted: #91aa98;
+            --accent: #66ff99;
+            --border: rgba(102,255,153,0.2);
+            --card: rgba(102,255,153,0.06);
+        }
+
+        body.sunset {
+            --background: #120b06;
+            --background-secondary: #1e1008;
+            --text: #fff4e8;
+            --muted: #b89d88;
+            --accent: #ff9a5c;
+            --border: rgba(255,154,92,0.2);
+            --card: rgba(255,154,92,0.06);
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 150px 6% 100px;
+            }
+
+            .hero h1 {
+                font-size: 65px;
+                letter-spacing: -4px;
+            }
+
+            section {
+                padding: 90px 6%;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about h3 {
+                font-size: 40px;
+            }
+
+            .section-title h2 {
+                font-size: 35px;
+            }
+
+            .contact h2 {
+                font-size: 55px;
+                letter-spacing: -3px;
+            }
+
+            footer {
+                padding: 25px 6%;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="background">
+        <div class="orb one"></div>
+        <div class="orb two"></div>
+    </div>
+
+
+    <!-- NAVIGATION -->
+    <nav>
+
+        <div class="logo">
+            YOUR NAME
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#work">WORK</a></li>
+            <li><a href="#music">MUSIC</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+
+        <div class="theme-container">
+
+            <button class="theme-button" onclick="toggleThemes()">
+                THEME
+            </button>
+
+            <div class="theme-menu" id="themeMenu">
+
+                <button class="theme-option" onclick="setTheme('')">
+                    ◻ Black
+                </button>
+
+                <button class="theme-option" onclick="setTheme('purple')">
+                    ◼ Purple
+                </button>
+
+                <button class="theme-option" onclick="setTheme('blue')">
+                    ◼ Blue
+                </button>
+
+                <button class="theme-option" onclick="setTheme('red')">
+                    ◼ Red
+                </button>
+
+                <button class="theme-option" onclick="setTheme('green')">
+                    ◼ Green
+                </button>
+
+                <button class="theme-option" onclick="setTheme('sunset')">
+                    ◼ Sunset
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="small-text">
+                    MUSICIAN / ARTIST / CREATIVE
+                </div>
+
+                <h1>
+                    HI, I'M<br>
+                    <span>YOUR NAME.</span>
+                </h1>
+
+                <p class="hero-description">
+                    I make music, art, and other weird things.
+                    This is my little corner of the internet.
+                </p>
+
+                <a href="#work" class="button">
+                    EXPLORE MY WORK
+                </a>
+
+                <a href="#contact" class="button">
+                    CONTACT
+                </a>
+
+            </div>
+
+            <div class="scroll">
+                SCROLL ↓
+            </div>
+
+        </section>
+
+
+        <!-- WORK -->
+        <section id="work">
+
+            <div class="section-title">
+
+                <h2>SELECTED WORK</h2>
+
+                <span>
+                    01 — PROJECTS
+                </span>
+
+            </div>
+
+            <div class="projects">
+
+                <a href="#" class="project">
+
+                    <span class="project-number">
+                        01
+                    </span>
+
+                    <h3>
+                        PROJECT ONE
+                    </h3>
+
+                    <p>
+                        MUSIC / 2026
+                    </p>
+
+                </a>
+
+
+                <a href="#" class="project">
+
+                    <span class="project-number">
+                        02
+                    </span>
+
+                    <h3>
+                        PROJECT TWO
+                    </h3>
+
+                    <p>
+                        ART / 2026
+                    </p>
+
+                </a>
+
+
+                <a href="#" class="project">
+
+                    <span class="project-number">
+                        03
+                    </span>
+
+                    <h3>
+                        PROJECT THREE
+                    </h3>
+
+                    <p>
+                        DESIGN / 2026
+                    </p>
+
+                </a>
+
+
+                <a href="#" class="project">
+
+                    <span class="project-number">
+                        04
+                    </span>
+
+                    <h3>
+                        PROJECT FOUR
+                    </h3>
+
+                    <p>
+                        OTHER / 2026
+                    </p>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- MUSIC -->
+        <section id="music">
+
+            <div class="section-title">
+
+                <h2>MUSIC</h2>
+
+                <span>
+                    02 — DISCOGRAPHY
+                </span>
+
+            </div>
+
+            <div class="music-list">
+
+                <a href="#" class="track">
+
+                    <div>
+                        <div class="track-name">
+                            SONG ONE
+                        </div>
+
+                        <div class="track-type">
+                            SINGLE
+                        </div>
+                    </div>
+
+                    <span>
+                        2026
+                    </span>
+
+                </a>
+
+
+                <a href="#" class="track">
+
+                    <div>
+                        <div class="track-name">
+                            SONG TWO
+                        </div>
+
+                        <div class="track-type">
+                            SINGLE
+                        </div>
+                    </div>
+
+                    <span>
+                        2026
+                    </span>
+
+                </a>
+
+
+                <a href="#" class="track">
+
+                    <div>
+                        <div class="track-name">
+                            ALBUM NAME
+                        </div>
+
+                        <div class="track-type">
+                            ALBUM
+                        </div>
+                    </div>
+
+                    <span>
+                        2026
+                    </span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+        <section id="about">
+
+            <div class="section-title">
+
+                <h2>ABOUT</h2>
+
+                <span>
+                    03 — WHO I AM
+                </span>
+
+            </div>
+
+            <div class="about">
+
+                <h3>
+                    MAKING THINGS<br>
+                    THAT FEEL<br>
+                    LIKE SOMETHING.
+                </h3>
+
+                <p>
+                    Hi, I'm YOUR NAME. I'm a musician and creative
+                    interested in making music, art, visuals, and
+                    whatever else I feel like creating.
+
+                    <br><br>
+
+                    I'm interested in experimenting with different
+                    sounds, visuals, ideas, and styles.
+
+                    <br><br>
+
+                    This website is a collection of the things
+                    I've made.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+        <section id="contact" class="contact">
+
+            <div class="small-text">
+                WANT TO TALK?
+            </div>
+
+            <h2>
+                LET'S CONNECT.
+            </h2>
+
+            <div class="socials">
+
+                <a href="#">
+                    INSTAGRAM
+                </a>
+
+                <a href="#">
+                    SOUNDCLOUD
+                </a>
+
+                <a href="#">
+                    YOUTUBE
+                </a>
+
+                <a href="#">
+                    SPOTIFY
+                </a>
+
+                <a href="#">
+                    EMAIL
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <span>
+            © 2026 YOUR NAME
+        </span>
+
+        <span>
+            MADE ON THE INTERNET
+        </span>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        function toggleThemes() {
+
+            const menu = document.getElementById("themeMenu");
+
+            menu.classList.toggle("active");
+
+        }
+
+
+        function setTheme(theme) {
+
+            document.body.className = theme;
+
+            localStorage.setItem("theme", theme);
+
+            document.getElementById("themeMenu")
+                .classList.remove("active");
+
+        }
+
+
+        // Remember the user's theme
+
+        const savedTheme = localStorage.getItem("theme");
+
+        if (savedTheme) {
+
+            document.body.className = savedTheme;
+
+        }
+
+
+        // Close theme menu when clicking elsewhere
+
+        document.addEventListener("click", function(event) {
+
+            const menu = document.getElementById("themeMenu");
+
+            const button = document.querySelector(".theme-button");
+
+            if (
+                !menu.contains(event.target) &&
+                !button.contains(event.target)
+            ) {
+
+                menu.classList.remove("active");
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
