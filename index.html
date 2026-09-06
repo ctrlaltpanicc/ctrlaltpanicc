@@ -24,8 +24,6 @@ body {
     min-height: 100vh;
 }
 
-/* SKY / BUBBLES */
-
 body::before {
     content: "";
     position: fixed;
@@ -38,8 +36,6 @@ body::before {
         radial-gradient(circle at 80% 75%, rgba(255,255,255,.55) 0 20px, transparent 21px);
     opacity: .8;
 }
-
-/* MAIN PAGE */
 
 .wrapper {
     width: min(1100px, calc(100% - 30px));
@@ -86,7 +82,7 @@ header::after {
     color: #477083;
 }
 
-/* NAV */
+/* NAVIGATION */
 
 nav {
     margin-top: 22px;
@@ -302,12 +298,13 @@ nav a:hover {
     font-size: 14px;
 }
 
-.about-text a {
-    color: #17749d;
+.about-name {
+    font-size: 18px;
     font-weight: bold;
+    color: #17618a;
 }
 
-/* LITTLE WEB BOX */
+/* WEB BOX */
 
 .web-box {
     margin-top: 20px;
@@ -336,6 +333,7 @@ footer span {
 /* MOBILE */
 
 @media (max-width: 760px) {
+
     .wrapper {
         width: calc(100% - 18px);
         margin-top: 10px;
@@ -372,8 +370,12 @@ footer span {
 <div class="wrapper">
 
     <!-- HEADER -->
+
     <header>
-        <div class="logo">ctrlaltpanicc</div>
+
+        <div class="logo">
+            ctrlaltpanicc
+        </div>
 
         <div class="subtitle">
             hai !! i make 90s jungle and other genres :D
@@ -385,16 +387,20 @@ footer span {
             <a href="#about">about</a>
             <a href="#links">links</a>
         </nav>
+
     </header>
 
 
     <div class="content">
 
-        <!-- MAIN COLUMN -->
+        <!-- MAIN CONTENT -->
+
         <main>
 
             <!-- HOME -->
+
             <section class="panel" id="home">
+
                 <div class="panel-title">
                     ★ welcome to my website
                 </div>
@@ -403,7 +409,6 @@ footer span {
 
                     <div class="profile">
 
-                        <!-- PFP -->
                         <img
                             class="pfp"
                             src="./reifrutiger.png"
@@ -411,7 +416,10 @@ footer span {
                         >
 
                         <div>
-                            <h1>ctrlaltpanicc</h1>
+
+                            <h1>
+                                ctrlaltpanicc
+                            </h1>
 
                             <p>
                                 hai !! i'm ctrlaltpanicc :D
@@ -425,9 +433,11 @@ footer span {
                             <div class="status">
                                 ● making music
                             </div>
+
                         </div>
 
                     </div>
+
 
                     <div class="web-box">
                         welcome to my little part of the internet !!
@@ -436,11 +446,14 @@ footer span {
                     </div>
 
                 </div>
+
             </section>
 
 
             <!-- MUSIC -->
+
             <section class="panel" id="music" style="margin-top:20px;">
+
                 <div class="panel-title">
                     ♫ music
                 </div>
@@ -450,9 +463,17 @@ footer span {
                     <div class="music-list">
 
                         <div class="music-card">
+
                             <div>
-                                <h3>CYB3R Z0NE 1</h3>
-                                <p>ctrlaltpanicc</p>
+
+                                <h3>
+                                    CYB3R Z0NE 1
+                                </h3>
+
+                                <p>
+                                    ctrlaltpanicc
+                                </p>
+
                             </div>
 
                             <a
@@ -462,13 +483,22 @@ footer span {
                             >
                                 spotify →
                             </a>
+
                         </div>
 
 
                         <div class="music-card">
+
                             <div>
-                                <h3>CYB3R Z0NE 2</h3>
-                                <p>ctrlaltpanicc & 985</p>
+
+                                <h3>
+                                    CYB3R Z0NE 2
+                                </h3>
+
+                                <p>
+                                    ctrlaltpanicc & 985
+                                </p>
+
                             </div>
 
                             <a
@@ -478,29 +508,38 @@ footer span {
                             >
                                 spotify →
                             </a>
+
                         </div>
 
                     </div>
 
                 </div>
+
             </section>
 
 
             <!-- ABOUT -->
+
             <section class="panel" id="about" style="margin-top:20px;">
+
                 <div class="panel-title">
-                    about me
+                    about
                 </div>
 
                 <div class="panel-body">
 
                     <div class="about-text">
-                        <p>
-                            i'm ctrlaltpanicc and i make music !!
+
+                        <p class="about-name">
+                            Autumn Gardner / ctrlaltpanicc
                         </p>
 
                         <p>
-                            my main thing is 90s jungle, but i like
+                            i'm Autumn, and ctrlaltpanicc is my music project !!
+                        </p>
+
+                        <p>
+                            i mainly make 90s jungle, but i like
                             experimenting with other genres too.
                         </p>
 
@@ -510,20 +549,26 @@ footer span {
                         </p>
 
                         <p>
-                            more stuff coming soon...
+                            more music and stuff coming soon...
                         </p>
+
                     </div>
 
                 </div>
+
             </section>
 
         </main>
 
 
         <!-- SIDEBAR -->
+
         <aside>
 
+            <!-- LINKS -->
+
             <section class="panel" id="links">
+
                 <div class="panel-title">
                     🔗 links
                 </div>
@@ -593,10 +638,14 @@ footer span {
                     </div>
 
                 </div>
+
             </section>
 
 
+            <!-- STATUS -->
+
             <section class="panel" style="margin-top:20px;">
+
                 <div class="panel-title">
                     📡 status
                 </div>
@@ -618,6 +667,7 @@ footer span {
                     </div>
 
                 </div>
+
             </section>
 
         </aside>
