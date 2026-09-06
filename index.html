@@ -1,1064 +1,1332 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>ctrlaltpanicc // Autumn Gardner</title>
-
-    <style>
-        /* =========================================================
-           CTRLALTPANICC — 90s JUNGLE / SPACE PORTFOLIO
-        ========================================================= */
-
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
-
-        :root {
-            --black: #020306;
-            --dark: #050912;
-            --green: #7dff9b;
-            --cyan: #58f6ff;
-            --purple: #a875ff;
-            --pink: #ff5fd7;
-            --white: #e9fff4;
-            --gray: #78918a;
-            --line: rgba(125,255,155,0.22);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: var(--black);
-            color: var(--white);
-            font-family: "Space Mono", monospace;
-            overflow-x: hidden;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-
-        /* =========================================================
-           STARFIELD
-        ========================================================= */
-
-        .space {
-            position: fixed;
-            inset: 0;
-            z-index: -10;
-            background:
-                radial-gradient(circle at 50% 40%, #10182a 0%, #050811 35%, #020306 75%);
-        }
-
-        .stars,
-        .stars::before,
-        .stars::after {
-            position: absolute;
-            inset: 0;
-            content: "";
-            background-image:
-                radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 1px),
-                radial-gradient(circle, rgba(125,255,155,.7) 1px, transparent 1px),
-                radial-gradient(circle, rgba(88,246,255,.7) 1px, transparent 1px);
-            background-size: 130px 130px, 210px 210px, 310px 310px;
-            background-position: 0 0, 40px 90px, 120px 30px;
-            opacity: .45;
-        }
-
-        .stars {
-            animation: drift 80s linear infinite;
-        }
-
-        .stars::before {
-            animation: drift 120s linear infinite reverse;
-            opacity: .25;
-        }
-
-        .stars::after {
-            animation: drift 160s linear infinite;
-            opacity: .18;
-        }
-
-        @keyframes drift {
-            from {
-                transform: translateY(0);
-            }
-
-            to {
-                transform: translateY(300px);
-            }
-        }
-
-
-        /* =========================================================
-           GLOW
-        ========================================================= */
-
-        .nebula {
-            position: fixed;
-            width: 700px;
-            height: 700px;
-            border-radius: 50%;
-            background: radial-gradient(
-                circle,
-                rgba(88,246,255,.08),
-                rgba(168,117,255,.04),
-                transparent 70%
-            );
-            filter: blur(20px);
-            pointer-events: none;
-            z-index: -5;
-            top: 10%;
-            left: 35%;
-            animation: nebulaMove 15s ease-in-out infinite alternate;
-        }
-
-        @keyframes nebulaMove {
-            from {
-                transform: translate(-80px, -30px) scale(.9);
-            }
-
-            to {
-                transform: translate(100px, 80px) scale(1.15);
-            }
-        }
-
-
-        /* =========================================================
-           CRT EFFECT
-        ========================================================= */
-
-        .scanlines {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 999;
-            background: repeating-linear-gradient(
-                to bottom,
-                transparent 0px,
-                transparent 3px,
-                rgba(0,0,0,.12) 4px
-            );
-            opacity: .3;
-        }
-
-        .vignette {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 998;
-            box-shadow: inset 0 0 180px rgba(0,0,0,.8);
-        }
-
-
-        /* =========================================================
-           NAVIGATION
-        ========================================================= */
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 18px 5%;
-
-            background: rgba(2,3,6,.78);
-            backdrop-filter: blur(15px);
-
-            border-bottom: 1px solid var(--line);
-        }
-
-        .logo {
-            color: var(--green);
-            font-family: "Orbitron", sans-serif;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-shadow: 0 0 12px rgba(125,255,155,.6);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 28px;
-            list-style: none;
-            font-size: 11px;
-        }
-
-        .nav-links a {
-            color: var(--gray);
-            transition: .3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--green);
-            text-shadow: 0 0 10px var(--green);
-        }
-
-
-        /* =========================================================
-           HERO
-        ========================================================= */
-
-        .hero {
-            min-height: 100vh;
-            padding: 180px 8% 100px;
-
-            display: flex;
-            align-items: center;
-
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 1100px;
-        }
-
-        .system {
-            color: var(--cyan);
-            font-size: 11px;
-            letter-spacing: 3px;
-            margin-bottom: 25px;
-        }
-
-        .system::before {
-            content: "● ";
-            color: var(--green);
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
-        }
-
-        .hero h1 {
-            font-family: "Orbitron", sans-serif;
-            font-size: clamp(60px, 12vw, 170px);
-            line-height: .82;
-            letter-spacing: -7px;
-            text-transform: uppercase;
-            margin-bottom: 35px;
-
-            text-shadow:
-                0 0 20px rgba(88,246,255,.15),
-                5px 0 rgba(255,95,215,.12),
-                -5px 0 rgba(88,246,255,.12);
-        }
-
-        .hero h1 .outline {
-            color: transparent;
-            -webkit-text-stroke: 1px var(--green);
-        }
-
-        .description {
-            max-width: 650px;
-            color: var(--gray);
-            font-size: 14px;
-            line-height: 1.9;
-            margin-bottom: 35px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 13px 20px;
-            margin-right: 8px;
-
-            border: 1px solid var(--green);
-            color: var(--green);
-
-            font-size: 11px;
-            letter-spacing: 1px;
-
-            background: rgba(125,255,155,.04);
-
-            transition: .3s;
-        }
-
-        .button:hover {
-            background: var(--green);
-            color: #020306;
-            box-shadow: 0 0 25px rgba(125,255,155,.4);
-            transform: translateY(-3px);
-        }
-
-        .coordinates {
-            position: absolute;
-            right: 7%;
-            bottom: 35px;
-            color: var(--gray);
-            font-size: 9px;
-            line-height: 2;
-            text-align: right;
-        }
-
-
-        /* =========================================================
-           SECTIONS
-        ========================================================= */
-
-        section {
-            padding: 130px 8%;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            border-bottom: 1px solid var(--line);
-            padding-bottom: 15px;
-            margin-bottom: 45px;
-        }
-
-        .section-header h2 {
-            font-family: "Orbitron", sans-serif;
-            color: var(--green);
-            font-size: 25px;
-            letter-spacing: 2px;
-        }
-
-        .section-number {
-            color: var(--gray);
-            font-size: 10px;
-        }
-
-
-        /* =========================================================
-           PROJECTS
-        ========================================================= */
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-        }
-
-        .project {
-            min-height: 330px;
-
-            padding: 25px;
-
-            position: relative;
-            overflow: hidden;
-
-            border: 1px solid var(--line);
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(88,246,255,.035),
-                    rgba(168,117,255,.025)
-                );
-
-            transition: .4s;
-        }
-
-        .project::after {
-            content: "ACCESS // 001";
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            color: var(--gray);
-            font-size: 8px;
-        }
-
-        .project:hover {
-            transform: translateY(-6px);
-            border-color: var(--cyan);
-            box-shadow:
-                0 0 35px rgba(88,246,255,.08),
-                inset 0 0 35px rgba(88,246,255,.03);
-        }
-
-        .project-number {
-            color: var(--cyan);
-            font-size: 10px;
-        }
-
-        .project h3 {
-            position: absolute;
-            left: 25px;
-            bottom: 55px;
-
-            font-family: "Orbitron", sans-serif;
-            font-size: 28px;
-        }
-
-        .project p {
-            position: absolute;
-            left: 25px;
-            bottom: 25px;
-
-            color: var(--gray);
-            font-size: 9px;
-        }
-
-
-        /* =========================================================
-           MUSIC
-        ========================================================= */
-
-        .music-intro {
-            color: var(--gray);
-            max-width: 650px;
-            font-size: 13px;
-            line-height: 1.8;
-            margin-bottom: 40px;
-        }
-
-        .track {
-            display: grid;
-            grid-template-columns: 60px 1fr 120px;
-
-            align-items: center;
-
-            padding: 22px 10px;
-
-            border-bottom: 1px solid rgba(125,255,155,.12);
-
-            transition: .3s;
-        }
-
-        .track:hover {
-            padding-left: 20px;
-            background: rgba(125,255,155,.025);
-        }
-
-        .track-number {
-            color: var(--gray);
-            font-size: 10px;
-        }
-
-        .track-name {
-            color: var(--white);
-            font-size: 16px;
-        }
-
-        .track-type {
-            color: var(--gray);
-            font-size: 9px;
-            margin-top: 5px;
-        }
-
-        .track-year {
-            color: var(--green);
-            text-align: right;
-            font-size: 10px;
-        }
-
-
-        /* =========================================================
-           ABOUT
-        ========================================================= */
-
-        .about {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 90px;
-        }
-
-        .about-title {
-            font-family: "Orbitron", sans-serif;
-            font-size: clamp(35px, 5vw, 65px);
-            line-height: 1.05;
-        }
-
-        .about-title span {
-            color: var(--cyan);
-        }
-
-        .about-text {
-            color: var(--gray);
-            font-size: 13px;
-            line-height: 2;
-        }
-
-        .terminal {
-            margin-top: 30px;
-            border: 1px solid var(--line);
-            padding: 20px;
-            color: var(--green);
-            background: rgba(0,0,0,.3);
-            font-size: 10px;
-            line-height: 2;
-        }
-
-        .terminal-title {
-            color: var(--cyan);
-            margin-bottom: 10px;
-        }
-
-
-        /* =========================================================
-           CONTACT
-        ========================================================= */
-
-        .contact {
-            text-align: center;
-            padding-top: 180px;
-            padding-bottom: 180px;
-        }
-
-        .contact-small {
-            color: var(--gray);
-            font-size: 10px;
-            letter-spacing: 3px;
-            margin-bottom: 25px;
-        }
-
-        .contact h2 {
-            font-family: "Orbitron", sans-serif;
-            font-size: clamp(45px, 9vw, 120px);
-            line-height: .9;
-            margin-bottom: 45px;
-
-            text-shadow: 0 0 30px rgba(88,246,255,.15);
-        }
-
-        .socials {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 25px;
-        }
-
-        .socials a {
-            color: var(--gray);
-            font-size: 11px;
-            border-bottom: 1px solid transparent;
-            transition: .3s;
-        }
-
-        .socials a:hover {
-            color: var(--green);
-            border-color: var(--green);
-        }
-
-
-        /* =========================================================
-           FOOTER
-        ========================================================= */
-
-        footer {
-            display: flex;
-            justify-content: space-between;
-
-            padding: 25px 8%;
-
-            border-top: 1px solid var(--line);
-
-            color: var(--gray);
-            font-size: 9px;
-        }
-
-
-        /* =========================================================
-           MOBILE
-        ========================================================= */
-
-        @media (max-width: 800px) {
-
-            nav {
-                padding: 16px 5%;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding: 150px 7% 100px;
-            }
-
-            .hero h1 {
-                font-size: 65px;
-                letter-spacing: -4px;
-            }
-
-            .coordinates {
-                display: none;
-            }
-
-            section {
-                padding: 90px 7%;
-            }
-
-            .projects {
-                grid-template-columns: 1fr;
-            }
-
-            .about {
-                grid-template-columns: 1fr;
-                gap: 45px;
-            }
-
-            .track {
-                grid-template-columns: 40px 1fr 60px;
-            }
-
-            .contact h2 {
-                font-size: 55px;
-            }
-
-            footer {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ctrlaltpanicc // Autumn Gardner</title>
+
+<style>
+
+/* =========================================================
+   BASIC
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: Tahoma, Verdana, Arial, sans-serif;
+    font-size: 13px;
+    color: #35354a;
+
+    background:
+        radial-gradient(circle at 15% 5%, rgba(255,255,255,.9), transparent 25%),
+        radial-gradient(circle at 85% 10%, rgba(157,222,255,.8), transparent 30%),
+        linear-gradient(
+            180deg,
+            #c8edff 0%,
+            #d9f5ff 28%,
+            #e8f7ed 62%,
+            #c9e9d0 100%
+        );
+
+    background-attachment: fixed;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+::selection {
+    background: #8fd6ff;
+    color: #fff;
+}
+
+
+/* =========================================================
+   FLOATING WEB 2.0 DECORATIONS
+========================================================= */
+
+.bubble {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            rgba(255,255,255,.95),
+            rgba(255,255,255,.3) 25%,
+            rgba(120,210,255,.18) 60%,
+            transparent 70%
+        );
+
+    box-shadow:
+        0 0 30px rgba(255,255,255,.5);
+}
+
+.bubble.one {
+    width: 130px;
+    height: 130px;
+    left: 3%;
+    top: 25%;
+}
+
+.bubble.two {
+    width: 80px;
+    height: 80px;
+    right: 8%;
+    top: 42%;
+}
+
+.bubble.three {
+    width: 170px;
+    height: 170px;
+    right: -40px;
+    bottom: 10%;
+}
+
+
+/* =========================================================
+   MAIN SITE
+========================================================= */
+
+.site {
+    width: min(980px, calc(100% - 24px));
+    margin: 25px auto 50px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+
+    position: relative;
+    overflow: hidden;
+
+    min-height: 235px;
+
+    border: 1px solid #7bb4d2;
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.95) 0%,
+            rgba(224,248,255,.92) 18%,
+            rgba(164,218,243,.88) 58%,
+            rgba(113,181,216,.92) 100%
+        );
+
+    box-shadow:
+        0 3px 0 rgba(255,255,255,.9) inset,
+        0 -3px 0 rgba(50,115,150,.25) inset,
+        0 8px 25px rgba(58,116,143,.28);
+}
+
+
+/* glossy reflection */
+
+.header::before {
+    content: "";
+
+    position: absolute;
+    left: 4%;
+    right: 4%;
+    top: 8px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.85),
+            rgba(255,255,255,0)
+        );
+
+    pointer-events: none;
+}
+
+
+/* little decorative circles */
+
+.header::after {
+    content: "✦  ✧  ✦  ✧  ✦";
+
+    position: absolute;
+    right: 22px;
+    bottom: 18px;
+
+    font-size: 18px;
+    color: rgba(255,255,255,.65);
+
+    letter-spacing: 8px;
+}
+
+
+/* =========================================================
+   HEADER CONTENT
+========================================================= */
+
+.header-content {
+    position: relative;
+    z-index: 2;
+
+    padding: 38px 45px;
+}
+
+.site-label {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.65);
+    border: 1px solid rgba(100,160,190,.45);
+
+    color: #477a96;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 1px 3px rgba(0,0,0,.08);
+}
+
+h1 {
+    margin: 18px 0 6px;
+
+    font-family:
+        Tahoma,
+        Verdana,
+        Arial,
+        sans-serif;
+
+    font-size: clamp(38px, 7vw, 70px);
+
+    font-weight: bold;
+
+    letter-spacing: -4px;
+
+    color: #fff;
+
+    text-shadow:
+        0 2px 0 #5e9fc1,
+        0 3px 5px rgba(30,90,120,.35);
+}
+
+.tagline {
+    font-size: 16px;
+
+    color: #315d73;
+
+    max-width: 560px;
+
+    line-height: 1.6;
+}
+
+.tagline strong {
+    color: #285a76;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav {
+
+    margin-top: 10px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+
+    padding: 6px;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.92),
+            rgba(210,235,245,.95)
+        );
+
+    border: 1px solid #9bc1d2;
+
+    box-shadow:
+        0 2px 5px rgba(0,0,0,.15);
+}
+
+.nav a {
+
+    padding: 9px 18px;
+
+    border-radius: 9px;
+
+    color: #41687b;
+
+    font-weight: bold;
+
+    font-size: 11px;
+
+    text-shadow: 0 1px white;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #d8edf5
+        );
+
+    border: 1px solid #9dbdca;
+
+    box-shadow:
+        0 1px 0 white inset,
+        0 2px 3px rgba(0,0,0,.12);
+}
+
+.nav a:hover {
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            180deg,
+            #8ed4f4,
+            #4ba5d0
+        );
+
+    border-color: #4b9ec4;
+
+    text-shadow:
+        0 1px 2px rgba(0,0,0,.25);
+}
+
+
+/* =========================================================
+   TWO COLUMN LAYOUT
+========================================================= */
+
+.columns {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        275px;
+
+    gap: 12px;
+
+    margin-top: 12px;
+}
+
+@media(max-width: 750px) {
+
+    .columns {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   WEB 2.0 PANELS
+========================================================= */
+
+.panel {
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    border: 1px solid #a7bec8;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.95),
+            rgba(241,249,249,.94)
+        );
+
+    box-shadow:
+        0 2px 0 rgba(255,255,255,.95) inset,
+        0 4px 14px rgba(55,100,110,.17);
+}
+
+.panel + .panel {
+    margin-top: 12px;
+}
+
+.panel-title {
+
+    padding: 9px 13px;
+
+    color: #3d6473;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 1px white;
+
+    border-bottom: 1px solid #b1cbd5;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #dceff4
+        );
+}
+
+.panel-title small {
+
+    float: right;
+
+    color: #8aa5af;
+
+    font-size: 9px;
+
+    font-weight: normal;
+}
+
+.panel-content {
+    padding: 17px;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about {
+
+    display: grid;
+
+    grid-template-columns: 125px 1fr;
+
+    gap: 18px;
+
+    align-items: start;
+}
+
+@media(max-width: 550px) {
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* fake avatar / artwork */
+
+.avatar {
+
+    width: 125px;
+    height: 125px;
+
+    border-radius: 18px;
+
+    border: 1px solid #81aebd;
+
+    background:
+
+        radial-gradient(
+            circle at 30% 25%,
+            rgba(255,255,255,.9),
+            transparent 15%
+        ),
+
+        linear-gradient(
+            135deg,
+            #b9edff,
+            #a6d7ff 45%,
+            #c6e9ce
+        );
+
+    box-shadow:
+        0 3px 0 rgba(255,255,255,.9) inset,
+        0 4px 10px rgba(70,110,120,.22);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: #437087;
+
+    font-weight: bold;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+p {
+    line-height: 1.6;
+    margin: 0 0 11px;
+}
+
+.green {
+    color: #4d9d72;
+}
+
+.blue {
+    color: #3983a7;
+}
+
+.purple {
+    color: #7d6da7;
+}
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+.music-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px;
+
+    margin-bottom: 7px;
+
+    border-radius: 9px;
+
+    border: 1px solid #b6cdd5;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #edf6f7
+        );
+
+    box-shadow:
+        0 1px 0 white inset;
+}
+
+.music-item:hover {
+
+    border-color: #76afd0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #e1f3fa
+        );
+}
+
+.cover {
+
+    flex: 0 0 53px;
+
+    width: 53px;
+    height: 53px;
+
+    border-radius: 8px;
+
+    border: 1px solid #82aebd;
+
+    background:
+
+        radial-gradient(
+            circle at 25% 20%,
+            white,
+            transparent 14%
+        ),
+
+        linear-gradient(
+            135deg,
+            #89d9f2,
+            #8ca9e8 50%,
+            #b4e0b7
+        );
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+
+    font-weight: bold;
+
+    font-size: 10px;
+
+    text-align: center;
+
+    text-shadow:
+        0 1px 2px rgba(0,0,0,.3);
+}
+
+.music-info {
+    flex: 1;
+}
+
+.music-title {
+
+    color: #315e73;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+.music-sub {
+
+    margin-top: 3px;
+
+    color: #879ca5;
+
+    font-size: 10px;
+}
+
+.listen {
+
+    padding: 6px 10px;
+
+    border-radius: 8px;
+
+    color: #fff;
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    background:
+        linear-gradient(
+            180deg,
+            #8cd1ec,
+            #4d9fc5
+        );
+
+    border: 1px solid #4c91b4;
+
+    box-shadow:
+        0 1px 0 rgba(255,255,255,.7) inset,
+        0 2px 3px rgba(0,0,0,.15);
+}
+
+.listen:hover {
+
+    background:
+        linear-gradient(
+            180deg,
+            #a1def5,
+            #5badd1
+        );
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.info-row {
+
+    padding: 7px 0;
+
+    border-bottom: 1px dotted #b9cdd3;
+
+    color: #637983;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row strong {
+    color: #3e6778;
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+.link {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    padding: 9px 11px;
+
+    border-radius: 8px;
+
+    border: 1px solid #b3cbd4;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #e5f2f5
+        );
+
+    color: #47748a;
+
+    font-weight: bold;
+
+    font-size: 11px;
+
+    box-shadow:
+        0 1px 0 white inset;
+}
+
+.link:hover {
+
+    color: #fff;
+
+    border-color: #6aa8c5;
+
+    background:
+        linear-gradient(
+            180deg,
+            #8dd4f0,
+            #5aa8ca
+        );
+}
+
+
+/* =========================================================
+   CURRENTLY BOX
+========================================================= */
+
+.now {
+
+    border-radius: 9px;
+
+    padding: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eefaff,
+            #eef8ee
+        );
+
+    border: 1px solid #b4d3d1;
+
+    color: #55747a;
+}
+
+.now strong {
+    color: #46809a;
+}
+
+
+/* =========================================================
+   LITTLE BADGES
+========================================================= */
+
+.badges {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 5px;
+}
+
+.badge {
+
+    padding: 4px 7px;
+
+    border-radius: 6px;
+
+    border: 1px solid #a7c3cb;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #dcecef
+        );
+
+    color: #69818b;
+
+    font-size: 9px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   VISITOR / FOOTER
+========================================================= */
+
+.visitor {
+
+    text-align: center;
+
+    margin-top: 12px;
+
+    padding: 15px;
+
+    border-radius: 13px;
+
+    border: 1px solid #9fbec9;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.95),
+            rgba(220,239,243,.95)
+        );
+
+    box-shadow:
+        0 3px 12px rgba(60,100,110,.14);
+
+    color: #71868e;
+
+    font-size: 10px;
+}
+
+.visitor strong {
+    color: #4c8198;
+}
+
+.footer-links {
+    margin-top: 8px;
+}
+
+.footer-links a {
+    color: #5689a0;
+    margin: 0 5px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   SMALL SHINE EFFECT
+========================================================= */
+
+.shine {
+
+    position: absolute;
+
+    width: 230px;
+    height: 80px;
+
+    right: 80px;
+    top: 25px;
+
+    transform: rotate(-20deg);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.5),
+            transparent
+        );
+
+    border-radius: 50%;
+
+    opacity: .35;
+
+    pointer-events: none;
+}
+
+</style>
 </head>
 
 
 <body>
 
-    <!-- SPACE BACKGROUND -->
+<!-- decorative bubbles -->
 
-    <div class="space">
-        <div class="stars"></div>
-        <div class="nebula"></div>
-    </div>
-
-    <!-- CRT OVERLAY -->
-
-    <div class="scanlines"></div>
-    <div class="vignette"></div>
+<div class="bubble one"></div>
+<div class="bubble two"></div>
+<div class="bubble three"></div>
 
 
-    <!-- NAVIGATION -->
+<div class="site">
 
-    <nav>
 
-        <div class="logo">
-            CTRLALTPANICC
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="header">
+
+        <div class="shine"></div>
+
+        <div class="header-content">
+
+            <div class="site-label">
+                AUTUMN'S PERSONAL WEBSITE
+            </div>
+
+            <h1>
+                ctrlaltpanicc
+            </h1>
+
+            <div class="tagline">
+
+                <strong>
+                    hai !!
+                </strong>
+
+                <br>
+
+                i make <strong>90s jungle</strong> and other genres
+
+                <br>
+
+                welcome to my little part of the internet :)
+
+            </div>
+
         </div>
 
-        <ul class="nav-links">
+    </header>
 
-            <li>
-                <a href="#work">WORK</a>
-            </li>
 
-            <li>
-                <a href="#music">MUSIC</a>
-            </li>
+    <!-- =====================================================
+         NAV
+    ====================================================== -->
 
-            <li>
-                <a href="#about">ABOUT</a>
-            </li>
+    <nav class="nav">
 
-            <li>
-                <a href="#contact">CONTACT</a>
-            </li>
-
-        </ul>
+        <a href="#home">home</a>
+        <a href="#music">music</a>
+        <a href="#about">about</a>
+        <a href="#links">links</a>
 
     </nav>
 
 
-    <!-- HERO -->
+    <!-- =====================================================
+         COLUMNS
+    ====================================================== -->
 
-    <section class="hero">
-
-        <div class="hero-content">
-
-            <div class="system">
-                SIGNAL ONLINE // ARTIST PROFILE
-            </div>
-
-            <h1>
-                AUTUMN<br>
-                <span class="outline">GARDNER</span>
-            </h1>
-
-            <p class="description">
-                Musician, artist, and creative working under the name
-                <strong>ctrlaltpanicc</strong>.
-
-                <br><br>
-
-                90s jungle, electronic sounds, experiments,
-                visuals, and whatever comes next.
-            </p>
-
-            <a href="#music" class="button">
-                ENTER MUSIC
-            </a>
-
-            <a href="#about" class="button">
-                ABOUT ME
-            </a>
-
-        </div>
-
-        <div class="coordinates">
-
-            SIGNAL: CTRLALTPANICC<br>
-            SECTOR: UNKNOWN<br>
-            FREQUENCY: 90s JUNGLE<br>
-            STATUS: TRANSMITTING
-
-        </div>
-
-    </section>
+    <div class="columns">
 
 
-    <!-- WORK -->
+        <!-- =================================================
+             LEFT
+        ================================================== -->
 
-    <section id="work">
-
-        <div class="section-header">
-
-            <h2>SELECTED WORK</h2>
-
-            <span class="section-number">
-                FILE_001 // PROJECTS
-            </span>
-
-        </div>
+        <main id="home">
 
 
-        <div class="projects">
+            <!-- ABOUT -->
 
-            <a href="#music" class="project">
+            <section class="panel" id="about">
 
-                <span class="project-number">
-                    PROJECT_01
-                </span>
+                <div class="panel-title">
 
-                <h3>
-                    MUSIC
-                </h3>
+                    about me
 
-                <p>
-                    AUDIO / ELECTRONIC / JUNGLE
-                </p>
+                    <small>
+                        welcome!!
+                    </small>
 
-            </a>
-
-
-            <a href="#about" class="project">
-
-                <span class="project-number">
-                    PROJECT_02
-                </span>
-
-                <h3>
-                    VISUALS
-                </h3>
-
-                <p>
-                    ART / DIGITAL / EXPERIMENTAL
-                </p>
-
-            </a>
-
-
-            <a href="#music" class="project">
-
-                <span class="project-number">
-                    PROJECT_03
-                </span>
-
-                <h3>
-                    CYB3R Z0NE
-                </h3>
-
-                <p>
-                    MUSIC / SERIES
-                </p>
-
-            </a>
-
-
-            <a href="https://www.youtube.com/@ctrlaltpanicc"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="project">
-
-                <span class="project-number">
-                    PROJECT_04
-                </span>
-
-                <h3>
-                    YOUTUBE
-                </h3>
-
-                <p>
-                    VIDEOS / MUSIC / MEDIA
-                </p>
-
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- MUSIC -->
-
-    <section id="music">
-
-        <div class="section-header">
-
-            <h2>MUSIC</h2>
-
-            <span class="section-number">
-                FILE_002 // AUDIO
-            </span>
-
-        </div>
-
-        <p class="music-intro">
-
-            A collection of music from ctrlaltpanicc.
-            Explore releases, experiments, and sounds from the
-            transmission.
-
-        </p>
-
-
-        <div class="music-list">
-
-            <a href="https://www.youtube.com/@ctrlaltpanicc"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="track">
-
-                <div class="track-number">
-                    01
                 </div>
 
-                <div>
+                <div class="panel-content">
 
-                    <div class="track-name">
-                        CYB3R Z0NE 1
-                    </div>
+                    <div class="about">
 
-                    <div class="track-type">
-                        RELEASE / ELECTRONIC
+                        <div class="avatar">
+
+                            CTRL<br>
+                            ALT<br>
+                            PANIC
+
+                        </div>
+
+                        <div>
+
+                            <p>
+
+                                hi!! i'm <span class="blue">
+                                Autumn Gardner
+                                </span>.
+
+                            </p>
+
+                            <p>
+
+                                online i usually go by
+                                <span class="purple">
+                                ctrlaltpanicc
+                                </span>.
+
+                            </p>
+
+                            <p>
+
+                                i make
+                                <span class="green">
+                                90s jungle
+                                </span>
+                                and other genres.
+
+                            </p>
+
+                            <p>
+
+                                this website is basically just
+                                a place to put my music and
+                                whatever else i feel like making.
+
+                            </p>
+
+                        </div>
+
                     </div>
 
                 </div>
 
-                <div class="track-year">
-                    2026
+            </section>
+
+
+            <!-- MUSIC -->
+
+            <section class="panel" id="music">
+
+                <div class="panel-title">
+
+                    my music
+
+                    <small>
+                        listen :)
+                    </small>
+
                 </div>
 
-            </a>
+                <div class="panel-content">
 
 
-            <a href="https://www.youtube.com/@ctrlaltpanicc"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="track">
+                    <div class="music-item">
 
-                <div class="track-number">
-                    02
-                </div>
+                        <div class="cover">
+                            CYB3R<br>Z0NE
+                        </div>
 
-                <div>
+                        <div class="music-info">
 
-                    <div class="track-name">
-                        CYB3R Z0NE 2
+                            <div class="music-title">
+                                CYB3R Z0NE 1
+                            </div>
+
+                            <div class="music-sub">
+                                ctrlaltpanicc
+                            </div>
+
+                        </div>
+
+                        <a
+                            class="listen"
+                            href="https://music.amazon.com/"
+                            target="_blank"
+                        >
+                            listen
+                        </a>
+
                     </div>
 
-                    <div class="track-type">
-                        RELEASE / ELECTRONIC
+
+                    <div class="music-item">
+
+                        <div class="cover">
+                            CYB3R<br>Z0NE 2
+                        </div>
+
+                        <div class="music-info">
+
+                            <div class="music-title">
+                                CYB3R Z0NE 2
+                            </div>
+
+                            <div class="music-sub">
+                                ctrlaltpanicc + 985
+                            </div>
+
+                        </div>
+
+                        <a
+                            class="listen"
+                            href="https://music.amazon.com/"
+                            target="_blank"
+                        >
+                            listen
+                        </a>
+
+                    </div>
+
+
+                    <div class="music-item">
+
+                        <div class="cover">
+                            ???
+                        </div>
+
+                        <div class="music-info">
+
+                            <div class="music-title">
+                                something new...
+                            </div>
+
+                            <div class="music-sub">
+                                coming eventually
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- CURRENTLY -->
+
+            <section class="panel">
+
+                <div class="panel-title">
+
+                    currently
+
+                    <small>
+                        status
+                    </small>
+
+                </div>
+
+                <div class="panel-content">
+
+                    <div class="now">
+
+                        <strong>
+                            ♫ making music
+                        </strong>
+
+                        <br><br>
+
+                        currently making stuff and
+                        experimenting with different sounds.
+
                     </div>
 
                 </div>
 
-                <div class="track-year">
-                    2026
+            </section>
+
+
+        </main>
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside>
+
+
+            <!-- PROFILE -->
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    profile
                 </div>
 
-            </a>
+                <div class="panel-content">
 
-
-            <a href="https://www.youtube.com/@ctrlaltpanicc"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="track">
-
-                <div class="track-number">
-                    03
-                </div>
-
-                <div>
-
-                    <div class="track-name">
-                        MORE COMING SOON
+                    <div class="info-row">
+                        <strong>name:</strong>
+                        Autumn
                     </div>
 
-                    <div class="track-type">
-                        TRANSMISSION / UNKNOWN
+                    <div class="info-row">
+                        <strong>username:</strong>
+                        ctrlaltpanicc
+                    </div>
+
+                    <div class="info-row">
+                        <strong>makes:</strong>
+                        music
+                    </div>
+
+                    <div class="info-row">
+                        <strong>genre:</strong>
+                        90s jungle + other genres
+                    </div>
+
+                    <div class="info-row">
+                        <strong>website:</strong>
+                        under construction
                     </div>
 
                 </div>
 
-                <div class="track-year">
-                    ????
+            </section>
+
+
+            <!-- LINKS -->
+
+            <section class="panel" id="links">
+
+                <div class="panel-title">
+                    find me
                 </div>
 
-            </a>
+                <div class="panel-content">
+
+
+                    <a
+                        class="link"
+                        href="https://www.youtube.com/@ctrlaltpanicc"
+                        target="_blank"
+                    >
+                        ▶ youtube
+                    </a>
+
+
+                    <a
+                        class="link"
+                        href="https://x.com/ctrlaltpanicc"
+                        target="_blank"
+                    >
+                        𝕏 twitter / x
+                    </a>
+
+
+                    <a
+                        class="link"
+                        href="https://music.amazon.com/"
+                        target="_blank"
+                    >
+                        ♫ music
+                    </a>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- BADGES -->
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    little badges
+                </div>
+
+                <div class="panel-content">
+
+                    <div class="badges">
+
+                        <span class="badge">
+                            MUSIC
+                        </span>
+
+                        <span class="badge">
+                            JUNGLE
+                        </span>
+
+                        <span class="badge">
+                            ART
+                        </span>
+
+                        <span class="badge">
+                            INTERNET
+                        </span>
+
+                        <span class="badge">
+                            DIY
+                        </span>
+
+                        <span class="badge">
+                            ☆
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </aside>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <div class="visitor">
+
+        <strong>
+            thanks for visiting!!
+        </strong>
+
+        <br><br>
+
+        this site is still being worked on lol
+
+        <div class="footer-links">
+
+            <a href="#home">home</a>
+            ·
+            <a href="#music">music</a>
+            ·
+            <a href="#about">about</a>
 
         </div>
 
-    </section>
+        <br>
+
+        © 2026 ctrlaltpanicc
+
+    </div>
 
 
-    <!-- ABOUT -->
-
-    <section id="about">
-
-        <div class="section-header">
-
-            <h2>ABOUT</h2>
-
-            <span class="section-number">
-                FILE_003 // PROFILE
-            </span>
-
-        </div>
-
-
-        <div class="about">
-
-            <div>
-
-                <h3 class="about-title">
-
-                    AUTUMN<br>
-
-                    <span>GARDNER</span>
-
-                </h3>
-
-            </div>
-
-
-            <div>
-
-                <p class="about-text">
-
-                    I'm Autumn Gardner, a musician and creative
-                    working under the name <strong>ctrlaltpanicc</strong>.
-
-                    <br><br>
-
-                    I make music across different genres, with an
-                    interest in 90s jungle, electronic sounds,
-                    experimental production, and digital aesthetics.
-
-                    <br><br>
-
-                    This website is my little corner of the internet —
-                    a place for music, art, projects, experiments,
-                    and whatever I decide to make next.
-
-                </p>
-
-
-                <div class="terminal">
-
-                    <div class="terminal-title">
-                        > SYSTEM_INFO
-                    </div>
-
-                    USER: AUTUMN GARDNER<br>
-                    ALIAS: CTRLALTPANICC<br>
-                    FIELD: MUSIC / ART<br>
-                    INTERESTS: JUNGLE / ELECTRONIC / EXPERIMENTAL<br>
-                    SIGNAL: ACTIVE<br>
-                    CONNECTION: ONLINE
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-
-    <section id="contact" class="contact">
-
-        <div class="contact-small">
-            END OF TRANSMISSION
-        </div>
-
-        <h2>
-            FIND ME<br>
-            ONLINE.
-        </h2>
-
-
-        <div class="socials">
-
-            <a
-                href="https://www.youtube.com/@ctrlaltpanicc"
-                target="_blank"
-                rel="noopener noreferrer">
-                YOUTUBE
-            </a>
-
-            <a
-                href="https://x.com/ctrlaltpanicc"
-                target="_blank"
-                rel="noopener noreferrer">
-                X / TWITTER
-            </a>
-
-            <a
-                href="#"
-                onclick="alert('Add your Instagram link here!'); return false;">
-                INSTAGRAM
-            </a>
-
-            <a
-                href="#"
-                onclick="alert('Add your music platform link here!'); return false;">
-                MUSIC
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <span>
-            CTRLALTPANICC // AUTUMN GARDNER
-        </span>
-
-        <span>
-            © 2026 — SIGNAL ACTIVE
-        </span>
-
-    </footer>
-
+</div>
 
 </body>
 </html>
-```
