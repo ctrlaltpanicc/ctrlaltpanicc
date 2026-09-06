@@ -368,9 +368,18 @@ footer span {
 <body>
 
 <!-- BACKGROUND MUSIC -->
-<audio autoplay loop preload="auto">
+
+<audio id="bgMusic" loop preload="auto">
     <source src="./e6929b33-b52d-444d-8060-1ba214507926.m4a" type="audio/mp4">
 </audio>
+
+<script>
+const music = document.getElementById("bgMusic");
+
+document.addEventListener("click", () => {
+    music.play().catch(() => {});
+}, { once: true });
+</script>
 
 <div class="wrapper">
 
