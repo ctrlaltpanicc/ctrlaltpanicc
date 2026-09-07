@@ -7,6 +7,7 @@
 <title>ctrlaltpanicc</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -19,8 +20,15 @@ body {
     margin: 0;
     font-family: Tahoma, Verdana, Arial, sans-serif;
     color: #183b52;
+
     background:
-        linear-gradient(180deg, #bfeeff 0%, #e8fbff 42%, #d4f2d2 100%);
+        linear-gradient(
+            180deg,
+            #bfeeff 0%,
+            #e8fbff 42%,
+            #d4f2d2 100%
+        );
+
     min-height: 100vh;
 }
 
@@ -29,11 +37,32 @@ body::before {
     position: fixed;
     inset: 0;
     pointer-events: none;
+
     background:
-        radial-gradient(circle at 8% 15%, rgba(255,255,255,.8) 0 18px, transparent 19px),
-        radial-gradient(circle at 91% 22%, rgba(255,255,255,.65) 0 25px, transparent 26px),
-        radial-gradient(circle at 20% 82%, rgba(255,255,255,.5) 0 14px, transparent 15px),
-        radial-gradient(circle at 80% 75%, rgba(255,255,255,.55) 0 20px, transparent 21px);
+        radial-gradient(
+            circle at 8% 15%,
+            rgba(255,255,255,.8) 0 18px,
+            transparent 19px
+        ),
+
+        radial-gradient(
+            circle at 91% 22%,
+            rgba(255,255,255,.65) 0 25px,
+            transparent 26px
+        ),
+
+        radial-gradient(
+            circle at 20% 82%,
+            rgba(255,255,255,.5) 0 14px,
+            transparent 15px
+        ),
+
+        radial-gradient(
+            circle at 80% 75%,
+            rgba(255,255,255,.55) 0 20px,
+            transparent 21px
+        );
+
     opacity: .8;
 }
 
@@ -42,16 +71,27 @@ body::before {
     margin: 25px auto 50px;
 }
 
-/* HEADER */
+
+/* =====================================================
+   HEADER
+===================================================== */
 
 header {
     position: relative;
     overflow: hidden;
+
     padding: 28px 30px;
+
     border: 2px solid #8bb9c8;
     border-radius: 20px;
+
     background:
-        linear-gradient(135deg, rgba(255,255,255,.95), rgba(190,238,255,.9));
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.95),
+            rgba(190,238,255,.9)
+        );
+
     box-shadow:
         0 4px 0 #72a8ba,
         0 10px 25px rgba(32,100,120,.18);
@@ -59,12 +99,17 @@ header {
 
 header::after {
     content: "";
+
     position: absolute;
+
     width: 230px;
     height: 230px;
+
     right: -80px;
     top: -120px;
+
     border-radius: 50%;
+
     background: rgba(255,255,255,.35);
 }
 
@@ -72,172 +117,361 @@ header::after {
     font-size: 38px;
     font-weight: bold;
     letter-spacing: -2px;
+
     color: #17618a;
-    text-shadow: 1px 2px 0 white;
+
+    text-shadow:
+        1px 2px 0 white;
 }
 
 .subtitle {
     margin-top: 7px;
+
     font-size: 15px;
+
     color: #477083;
 }
 
-/* NAVIGATION */
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
 nav {
     margin-top: 22px;
+
     display: flex;
     flex-wrap: wrap;
+
     gap: 9px;
 }
 
 nav a {
     text-decoration: none;
+
     color: #164e6b;
+
     font-weight: bold;
     font-size: 13px;
+
     padding: 9px 16px;
+
     border: 1px solid #78aabd;
     border-radius: 9px;
-    background: linear-gradient(#ffffff, #b9e6f4);
-    box-shadow: 0 2px 0 #6597a8;
+
+    background:
+        linear-gradient(
+            #ffffff,
+            #b9e6f4
+        );
+
+    box-shadow:
+        0 2px 0 #6597a8;
+
+    transition: .15s;
 }
 
 nav a:hover {
     transform: translateY(-1px);
-    background: linear-gradient(#ffffff, #d5f5ff);
+
+    background:
+        linear-gradient(
+            #ffffff,
+            #d5f5ff
+        );
 }
 
-/* CONTENT */
+
+/* =====================================================
+   CONTENT
+===================================================== */
 
 .content {
     margin-top: 22px;
+
     display: grid;
-    grid-template-columns: 1fr 300px;
+
+    grid-template-columns:
+        1fr
+        300px;
+
     gap: 20px;
 }
 
+
+/* =====================================================
+   PANELS
+===================================================== */
+
 .panel {
     border: 2px solid #91bbc5;
+
     border-radius: 18px;
-    background: rgba(246,255,255,.88);
+
+    background:
+        rgba(246,255,255,.88);
+
     box-shadow:
         0 4px 0 #78aab5,
         0 10px 25px rgba(32,100,120,.14);
+
     overflow: hidden;
 }
 
 .panel-title {
     padding: 12px 17px;
+
     font-size: 14px;
     font-weight: bold;
+
     color: white;
-    background: linear-gradient(#43a8d3, #1977a5);
-    text-shadow: 1px 1px 0 #126080;
+
+    background:
+        linear-gradient(
+            #43a8d3,
+            #1977a5
+        );
+
+    text-shadow:
+        1px 1px 0 #126080;
 }
 
 .panel-body {
     padding: 22px;
 }
 
-/* PROFILE */
+
+/* =====================================================
+   PROFILE
+===================================================== */
 
 .profile {
     display: flex;
+
     gap: 22px;
+
     align-items: center;
 }
 
 .pfp {
     width: 145px;
     height: 145px;
+
     flex-shrink: 0;
+
     object-fit: cover;
+
     display: block;
+
     border-radius: 18px;
+
     border: 4px solid white;
+
     box-shadow:
         0 0 0 2px #74aebd,
         0 5px 12px rgba(0,0,0,.18);
+
     background: #dff7ff;
 }
 
 .profile h1 {
     margin: 0 0 8px;
+
     font-size: 27px;
+
     color: #17618a;
 }
 
 .profile p {
     margin: 7px 0;
+
     line-height: 1.55;
+
     font-size: 14px;
 }
 
-/* STATUS */
+
+/* =====================================================
+   STATUS
+===================================================== */
 
 .status {
     display: inline-block;
+
     margin-top: 9px;
+
     padding: 5px 10px;
+
     border-radius: 20px;
+
     background: #d9f5d6;
+
     border: 1px solid #8bc583;
+
     color: #36732f;
+
     font-size: 12px;
+
     font-weight: bold;
 }
 
-/* MUSIC */
+
+/* =====================================================
+   MUSIC
+===================================================== */
 
 .music-list {
     display: grid;
+
     gap: 14px;
 }
 
 .music-card {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
+
     gap: 15px;
+
     padding: 15px;
+
     border: 1px solid #9bc5cf;
+
     border-radius: 13px;
-    background: linear-gradient(135deg, #effcff, #d9f4ec);
-    box-shadow: inset 0 1px white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #effcff,
+            #d9f4ec
+        );
+
+    box-shadow:
+        inset 0 1px white;
 }
 
 .music-card h3 {
     margin: 0 0 5px;
+
     color: #1a6282;
+
     font-size: 17px;
 }
 
 .music-card p {
     margin: 0;
+
     font-size: 12px;
+
     color: #527180;
 }
 
 .button {
     display: inline-block;
+
     flex-shrink: 0;
+
     text-decoration: none;
+
     color: white;
+
     font-size: 12px;
     font-weight: bold;
+
     padding: 9px 13px;
+
     border-radius: 8px;
+
     border: 1px solid #246b86;
-    background: linear-gradient(#65c3e7, #247da4);
-    box-shadow: 0 2px 0 #17576e;
+
+    background:
+        linear-gradient(
+            #65c3e7,
+            #247da4
+        );
+
+    box-shadow:
+        0 2px 0 #17576e;
+
+    transition: .15s;
 }
 
 .button:hover {
-    background: linear-gradient(#8bdcff, #348eb5);
+    background:
+        linear-gradient(
+            #8bdcff,
+            #348eb5
+        );
 }
 
-/* SIDEBAR */
+
+/* =====================================================
+   BLOG
+===================================================== */
+
+.blog-list {
+    display: grid;
+
+    gap: 14px;
+}
+
+.blog-post {
+    padding: 16px;
+
+    border: 1px solid #9bc5cf;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #effcff,
+            #d9f4ec
+        );
+
+    box-shadow:
+        inset 0 1px white;
+
+    transition: .15s;
+}
+
+.blog-post:hover {
+    border-color: #75aebe;
+
+    transform: translateY(-1px);
+}
+
+.blog-date {
+    margin-bottom: 6px;
+
+    color: #79939d;
+
+    font-size: 10px;
+}
+
+.blog-title {
+    margin: 0 0 9px;
+
+    color: #17618a;
+
+    font-size: 19px;
+}
+
+.blog-text {
+    margin: 0;
+
+    color: #3d5d6a;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
 
 .side-section {
     margin-bottom: 20px;
@@ -249,80 +483,136 @@ nav a:hover {
 
 .side-title {
     font-size: 13px;
+
     font-weight: bold;
+
     color: #17618a;
+
     margin-bottom: 10px;
 }
 
 .side-links {
     display: grid;
+
     gap: 8px;
 }
 
 .side-links a {
     display: block;
+
     padding: 10px 12px;
+
     text-decoration: none;
+
     color: #24556b;
+
     font-size: 13px;
+
     border: 1px solid #a5cbd3;
+
     border-radius: 9px;
-    background: linear-gradient(#ffffff, #e0f6fa);
+
+    background:
+        linear-gradient(
+            #ffffff,
+            #e0f6fa
+        );
+
+    transition: .15s;
 }
 
 .side-links a:hover {
     background: #ffffff;
+
+    transform: translateX(2px);
 }
 
-/* GENRES */
+
+/* =====================================================
+   GENRES
+===================================================== */
 
 .genres {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 7px;
 }
 
 .genre {
     padding: 5px 8px;
+
     font-size: 10px;
+
     font-weight: bold;
+
     border: 1px solid #8db5c0;
-    background: linear-gradient(#fff, #c7e8ef);
+
+    background:
+        linear-gradient(
+            #fff,
+            #c7e8ef
+        );
+
     border-radius: 5px;
 }
 
-/* ABOUT */
+
+/* =====================================================
+   ABOUT
+===================================================== */
 
 .about-text {
     line-height: 1.7;
+
     font-size: 14px;
 }
 
 .about-name {
     font-size: 18px;
+
     font-weight: bold;
+
     color: #17618a;
 }
 
-/* WEB BOX */
+
+/* =====================================================
+   WEB BOX
+===================================================== */
 
 .web-box {
     margin-top: 20px;
+
     padding: 15px;
+
     border: 1px dashed #7caeb9;
+
     border-radius: 12px;
-    background: rgba(255,255,255,.65);
+
+    background:
+        rgba(255,255,255,.65);
+
     font-size: 12px;
+
     line-height: 1.6;
 }
 
-/* FOOTER */
+
+/* =====================================================
+   FOOTER
+===================================================== */
 
 footer {
     margin-top: 25px;
+
     text-align: center;
+
     color: #527889;
+
     font-size: 11px;
+
     padding: 15px;
 }
 
@@ -330,12 +620,16 @@ footer span {
     color: #26769a;
 }
 
-/* MOBILE */
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media (max-width: 760px) {
 
     .wrapper {
         width: calc(100% - 18px);
+
         margin-top: 10px;
     }
 
@@ -349,41 +643,142 @@ footer span {
 
     .profile {
         flex-direction: column;
+
         text-align: center;
     }
 
     .music-card {
         flex-direction: column;
+
         align-items: flex-start;
     }
 
     .button {
         width: 100%;
+
         text-align: center;
     }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- BACKGROUND MUSIC -->
 
-<audio id="bgMusic" loop preload="auto">
-    <source src="./e6929b33-b52d-444d-8060-1ba214507926.m4a" type="audio/mp4">
+<!-- =====================================================
+     BACKGROUND MUSIC
+
+     IMPORTANT:
+     The audio file must be named EXACTLY:
+
+     e6929b33-b52d-444d-8060-1ba214507926.m4a
+
+     and must be in the same folder as index.html.
+===================================================== -->
+
+<audio
+    id="bgMusic"
+    loop
+    preload="auto"
+>
+
+    <source
+        src="./e6929b33-b52d-444d-8060-1ba214507926.m4a"
+        type="audio/mp4"
+    >
+
+    Your browser does not support audio.
+
 </audio>
 
+
 <script>
+
 const music = document.getElementById("bgMusic");
 
-document.addEventListener("click", () => {
-    music.play().catch(() => {});
-}, { once: true });
+let musicStarted = false;
+
+
+/*
+    Browsers usually block websites from
+    automatically playing audio.
+
+    So the first time somebody clicks
+    anywhere on the website, the music starts.
+*/
+
+document.addEventListener(
+    "click",
+    function startMusic() {
+
+        if (musicStarted) {
+            return;
+        }
+
+        musicStarted = true;
+
+        music.volume = 0.35;
+
+        music.play()
+            .then(() => {
+
+                console.log(
+                    "Background music started."
+                );
+
+            })
+            .catch((error) => {
+
+                console.log(
+                    "Background music could not start:",
+                    error
+                );
+
+            });
+
+    },
+    {
+        once: true
+    }
+);
+
+
+/*
+    Check whether the audio file
+    actually loaded.
+*/
+
+music.addEventListener(
+    "error",
+    () => {
+
+        console.log(
+            "ERROR: Background audio could not be found."
+        );
+
+        console.log(
+            "Make sure this exact file exists:"
+        );
+
+        console.log(
+            "e6929b33-b52d-444d-8060-1ba214507926.m4a"
+        );
+
+    }
+);
+
 </script>
+
 
 <div class="wrapper">
 
-    <!-- HEADER -->
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
 
     <header>
 
@@ -391,37 +786,83 @@ document.addEventListener("click", () => {
             ctrlaltpanicc
         </div>
 
+
         <div class="subtitle">
             hai !! i make 90s jungle and other genres :D
         </div>
 
+
         <nav>
-            <a href="#home">home</a>
-            <a href="#music">music</a>
-            <a href="#about">about</a>
-            <a href="#links">links</a>
+
+            <a href="#home">
+                home
+            </a>
+
+            <a href="#music">
+                music
+            </a>
+
+            <a href="#blog">
+                blog
+            </a>
+
+            <a href="#about">
+                about
+            </a>
+
+            <a href="#links">
+                links
+            </a>
+
         </nav>
 
     </header>
 
 
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
     <div class="content">
 
-        <!-- MAIN CONTENT -->
+
+        <!-- =================================================
+             LEFT / MAIN COLUMN
+        ================================================= -->
 
         <main>
 
-            <!-- HOME -->
 
-            <section class="panel" id="home">
+            <!-- =============================================
+                 HOME
+            ============================================== -->
+
+            <section
+                class="panel"
+                id="home"
+            >
 
                 <div class="panel-title">
                     ★ welcome to my website
                 </div>
 
+
                 <div class="panel-body">
 
+
                     <div class="profile">
+
+
+                        <!--
+                            PROFILE PICTURE
+
+                            Make sure this file is named:
+                            reifrutiger.png
+
+                            and is in the same folder
+                            as index.html.
+                        -->
 
                         <img
                             class="pfp"
@@ -429,24 +870,30 @@ document.addEventListener("click", () => {
                             alt="ctrlaltpanicc profile picture"
                         >
 
+
                         <div>
+
 
                             <h1>
                                 ctrlaltpanicc
                             </h1>
 
+
                             <p>
                                 hai !! i'm ctrlaltpanicc :D
                             </p>
+
 
                             <p>
                                 i make 90s jungle and other genres.
                                 follow if u like my music !! enjoy !!
                             </p>
 
+
                             <div class="status">
                                 ● making music
                             </div>
+
 
                         </div>
 
@@ -454,29 +901,48 @@ document.addEventListener("click", () => {
 
 
                     <div class="web-box">
-                        welcome to my little mall corner of the internet !!
-                        this is where i'll put my music, links,
-                        projects and whatever else i feel like adding.
+
+                        welcome to my little corner of the internet !!
+
+                        this is where i'll put my music,
+                        blog posts, random updates,
+                        projects and whatever else
+                        i feel like adding.
+
                     </div>
+
 
                 </div>
 
             </section>
 
 
-            <!-- MUSIC -->
 
-            <section class="panel" id="music" style="margin-top:20px;">
+            <!-- =============================================
+                 MUSIC
+            ============================================== -->
+
+            <section
+                class="panel"
+                id="music"
+                style="margin-top:20px;"
+            >
 
                 <div class="panel-title">
                     ♫ music
                 </div>
 
+
                 <div class="panel-body">
+
 
                     <div class="music-list">
 
+
+                        <!-- CYB3R Z0NE 1 -->
+
                         <div class="music-card">
+
 
                             <div>
 
@@ -490,18 +956,25 @@ document.addEventListener("click", () => {
 
                             </div>
 
+
                             <a
                                 class="button"
                                 href="https://open.spotify.com/artist/1yJiJUKPFymGY50iW2pHYp"
                                 target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 spotify →
                             </a>
 
+
                         </div>
 
 
+
+                        <!-- CYB3R Z0NE 2 -->
+
                         <div class="music-card">
+
 
                             <div>
 
@@ -510,191 +983,430 @@ document.addEventListener("click", () => {
                                 </h3>
 
                                 <p>
-                                    ctrlaltpanicc & 985
+                                    ctrlaltpanicc &amp; 985
                                 </p>
 
                             </div>
+
 
                             <a
                                 class="button"
                                 href="https://open.spotify.com/artist/1yJiJUKPFymGY50iW2pHYp"
                                 target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 spotify →
                             </a>
 
+
                         </div>
 
+
                     </div>
+
 
                 </div>
 
             </section>
 
 
-            <!-- ABOUT -->
 
-            <section class="panel" id="about" style="margin-top:20px;">
+            <!-- =============================================
+                 BLOG
+            ============================================== -->
+
+            <section
+                class="panel"
+                id="blog"
+                style="margin-top:20px;"
+            >
+
+
+                <div class="panel-title">
+                    ✎ blog
+                </div>
+
+
+                <div class="panel-body">
+
+
+                    <div class="blog-list">
+
+
+                        <!-- =================================================
+                             NEWEST BLOG POST
+
+                             Put new posts ABOVE older posts.
+                        ================================================== -->
+
+                        <article class="blog-post">
+
+
+                            <div class="blog-date">
+                                september 6, 2026
+                            </div>
+
+
+                            <h2 class="blog-title">
+                                welcome to my website !!
+                            </h2>
+
+
+                            <p class="blog-text">
+
+                                hi !! i finally made a website lol.
+                                i'm gonna use this place for music,
+                                random updates, projects and whatever
+                                else i feel like posting.
+
+                            </p>
+
+
+                        </article>
+
+
+
+                        <!-- =================================================
+                             EXAMPLE POST
+                        ================================================== -->
+
+                        <article class="blog-post">
+
+
+                            <div class="blog-date">
+                                coming soon
+                            </div>
+
+
+                            <h2 class="blog-title">
+                                another post...
+                            </h2>
+
+
+                            <p class="blog-text">
+
+                                i'll probably write something here
+                                eventually :D
+
+                            </p>
+
+
+                        </article>
+
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =============================================
+                 ABOUT
+            ============================================== -->
+
+            <section
+                class="panel"
+                id="about"
+                style="margin-top:20px;"
+            >
+
 
                 <div class="panel-title">
                     about
                 </div>
 
+
                 <div class="panel-body">
 
+
                     <div class="about-text">
+
 
                         <p class="about-name">
                             Autumn Gardner / ctrlaltpanicc
                         </p>
 
+
                         <p>
-                            i'm Autumn, and ctrlaltpanicc is my music project !!
+                            i'm Autumn, and ctrlaltpanicc is my
+                            music project !!
                         </p>
+
 
                         <p>
                             i mainly make 90s jungle, but i like
                             experimenting with other genres too.
                         </p>
 
+
                         <p>
                             this website is basically my little
                             corner of the internet :3
                         </p>
 
+
                         <p>
                             more music and stuff coming soon...
                         </p>
 
+
                     </div>
+
 
                 </div>
 
             </section>
 
+
         </main>
 
 
-        <!-- SIDEBAR -->
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
 
         <aside>
 
-            <!-- LINKS -->
 
-            <section class="panel" id="links">
+            <!-- =============================================
+                 LINKS
+            ============================================== -->
+
+            <section
+                class="panel"
+                id="links"
+            >
+
 
                 <div class="panel-title">
                     🔗 links
                 </div>
 
+
                 <div class="panel-body">
 
+
                     <div class="side-section">
+
 
                         <div class="side-title">
                             find me online
                         </div>
 
+
                         <div class="side-links">
+
 
                             <a
                                 href="https://www.youtube.com/@ctrlaltpanicc"
                                 target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 ▶ YouTube
                             </a>
 
+
                             <a
                                 href="https://open.spotify.com/artist/1yJiJUKPFymGY50iW2pHYp"
                                 target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 ♫ Spotify
                             </a>
 
+
                             <a
                                 href="https://x.com/ctrlaltpanicc"
                                 target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 𝕏 Twitter / X
                             </a>
+
 
                         </div>
 
                     </div>
 
 
-                    <!-- GENRES -->
+
+                    <!-- =====================================
+                         GENRES
+                    ====================================== -->
 
                     <div class="side-section">
+
 
                         <div class="side-title">
                             genres
                         </div>
 
+
                         <div class="genres">
+
 
                             <div class="genre">
                                 90s jungle
                             </div>
 
+
                             <div class="genre">
                                 electronic
                             </div>
+
 
                             <div class="genre">
                                 indie
                             </div>
 
+
                             <div class="genre">
                                 and more
                             </div>
+
 
                         </div>
 
                     </div>
 
+
                 </div>
 
             </section>
 
 
-            <!-- STATUS -->
 
-            <section class="panel" style="margin-top:20px;">
+            <!-- =============================================
+                 STATUS
+            ============================================== -->
+
+            <section
+                class="panel"
+                style="margin-top:20px;"
+            >
+
 
                 <div class="panel-title">
                     📡 status
                 </div>
 
+
                 <div class="panel-body">
+
 
                     <div class="side-title">
                         currently
                     </div>
 
-                    <p style="font-size:13px; line-height:1.5;">
+
+                    <p
+                        style="
+                            font-size:13px;
+                            line-height:1.5;
+                        "
+                    >
+
                         listening to jungle<br>
+
                         making music<br>
+
                         messing with my website
+
                     </p>
+
 
                     <div class="status">
                         online !!
                     </div>
 
+
                 </div>
 
             </section>
 
+
+
+            <!-- =============================================
+                 BLOG INFO
+            ============================================== -->
+
+            <section
+                class="panel"
+                style="margin-top:20px;"
+            >
+
+
+                <div class="panel-title">
+                    ✎ blog info
+                </div>
+
+
+                <div class="panel-body">
+
+
+                    <p
+                        style="
+                            font-size:13px;
+                            line-height:1.6;
+                        "
+                    >
+
+                        i'll be posting updates,
+                        thoughts, music news and
+                        random stuff here.
+
+                    </p>
+
+
+                    <p
+                        style="
+                            font-size:11px;
+                            color:#718b95;
+                        "
+                    >
+
+                        new posts will appear at
+                        the top of the page !!
+
+                    </p>
+
+
+                </div>
+
+            </section>
+
+
         </aside>
+
 
     </div>
 
 
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+
     <footer>
-        made by <span>ctrlaltpanicc</span> · 2026<br>
+
+        made by
+
+        <span>
+            ctrlaltpanicc
+        </span>
+
+        · 2026
+
+        <br>
+
         thanks for visiting ^^
+
     </footer>
+
 
 </div>
 
